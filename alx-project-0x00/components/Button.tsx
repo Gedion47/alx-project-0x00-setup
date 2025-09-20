@@ -20,7 +20,22 @@ const Button: React.FC<ButtonProps> = ({
   size = "medium",
   shape = "rounded-md",
 }) => {
+  const sizeClass = sizeClasses[size] ?? sizeClasses["medium"];
+  const shapeClass = shapeClasses[shape] ?? shapeClasses["rounded-md"];
+
   return (
+    <button
+      type={type}
+      onClick={onClick}
+      className={`bg-gray-50 hover:bg-green-50
+          text-gray-700 hover:text-green-700
+          border border-gray-200 hover:border-green-300
+          transition-colors duration-200 font-semibold ${sizeClass} ${shapeClass} ${styles}`.trim()}
+    >
+      {title}
+    </button>
+  );
+  /* return (
     <div className="inline-block">
       <button
         type={type}
@@ -38,7 +53,7 @@ const Button: React.FC<ButtonProps> = ({
         {title}
       </button>
     </div>
-  );
+  ); */
 };
 
 export default Button;
